@@ -603,9 +603,11 @@ static NSString *ViewFrameKey = @"view.frame";
 				}
 			}
 		}
-		frame.origin.x = destX;
-		_panning.view.frame = frame;
-		
+        
+		if (destX > 0) {
+            frame.origin.x = destX;
+            _panning.view.frame = frame;
+        }
 	} else if (gesture.state == UIGestureRecognizerStateEnded) {
 		if (_panning) {
 			CGFloat velocity = [gesture velocityInView:self.view].x;
